@@ -1,0 +1,42 @@
+GET http://localhost:5000
+###
+
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "www@example.com",
+  "password": "password123",
+  "phone": "123-456-7890",
+  "address": "123 Main St, City, Country",
+  "user_type": "donor"
+}
+###
+
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+  "email": "www@example.com",
+  "password": "password123"
+}
+
+
+###
+POST http://localhost:5000/auth/logout
+
+###
+
+GET http://localhost:5000/auth/check
+Content-Type: application/json
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImVtYWlsIjoiam9vMWhuZG9lQGV4YW1wbGUuY29tIiwibmFtZSI6IkpvaG4gRG9lIiwidXNlcl90eXBlIjoiZG9ub3IiLCJpYXQiOjE3NDA3NTA2NjUsImV4cCI6MTc0MDc1NDI2NX0.TaJl3Soc9_gOCbzRoZvTjAbKz_S_6HeViVPdhNF5EGA
+
+
+### 
+
+GET http://localhost:5000/api/requests/donations
+
+
+###
+POST http://localhost:5000/api/payment

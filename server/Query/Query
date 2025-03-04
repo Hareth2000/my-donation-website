@@ -1,0 +1,32 @@
+-- Table: public.requests
+
+-- DROP TABLE IF EXISTS public.requests;
+
+CREATE TABLE IF NOT EXISTS public.requests
+(
+    id uuid NOT NULL,
+    user_id integer NOT NULL,
+    "organizationName" character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    "organizationAddress" text COLLATE pg_catalog."default" NOT NULL,
+    phone character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    email character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    "toolName" character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    "medicalEquipment" text COLLATE pg_catalog."default" NOT NULL,
+    quantity integer NOT NULL,
+    "estimatedCost" numeric(10,2) NOT NULL,
+    "proofDocument" text COLLATE pg_catalog."default" NOT NULL,
+    "hasFundraisingLicense" boolean NOT NULL,
+    agreement boolean NOT NULL,
+    status enum_requests_status DEFAULT 'pending'::enum_requests_status,
+    description text COLLATE pg_catalog."default",
+    amount_raised numeric(10,2) NOT NULL DEFAULT 0,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL,
+    CONSTRAINT requests_pkey PRIMARY KEY (id),
+    CONSTRAINT requests_email_key UNIQUE (email)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.requests
+    OWNER to postgres;
